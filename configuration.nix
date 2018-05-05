@@ -10,6 +10,16 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.cleanTmpDir = true;
+
+    boot.initrd.luks.devices = [
+      {
+         name = "root";
+	 device = "/dev/nvme0n1p3"; # Does this belong here?
+	 preLVM = true;
+      }
+    ];
+
+
     hardware.pulseaudio.enable = true;
     time.timeZone = "Europe/Berlin";
 
