@@ -1,7 +1,7 @@
 
 { config, lib, pkgs, ... }:
 
-let emacs = import ./emacs.nix { inherit pkgs; };
+#let emacs = import ./emacs.nix { inherit pkgs; };
 in {
    services.xserver = {
        enable = true;
