@@ -141,6 +141,7 @@ in
       dina-font
       proggyfonts
       iosevka
+      font-awesome-ttf
     ];
 
     fontconfig = {

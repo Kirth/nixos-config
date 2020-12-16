@@ -40,5 +40,7 @@
     zsh-powerlevel10k
     clinfo
     killall
+    font-awesome
+    unrar
 	];
 }
