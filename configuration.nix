@@ -64,6 +64,10 @@
   virtualisation = {
     docker.enable = true;
 	  docker.autoPrune.enable = true;
+    virtualbox.host = {
+      enable = true;
+      enableExtensionPack = true;
+    };
   };
 
   powerManagement = {
@@ -77,7 +81,9 @@
     name = "kirth";
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "docker" "disk" "audio" "video" "systemd-journal" "libvirtd" "jackaudio" ];
+    extraGroups = [ "wheel" "docker" "disk" "audio" "video"
+                    "systemd-journal" "libvirtd" "jackaudio"
+                    "user-with-access-to-virtualbox"  ];
     createHome = true;
     shell = pkgs.zsh;
   };
