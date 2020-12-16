@@ -39,9 +39,26 @@ in
   };
 
   #
-  services.compton.enable = true;
-  services.compton.backend = "xrender";
+#  services.compton.enable = true;
+#  services.compton.backend = "xrender";
   services.onedrive.enable = true;
+
+  services.picom = {
+    enable = true;
+    #inactiveOpacity = 1;
+    backend = "glx";
+    vSync = true;
+    # https://www.reddit.com/r/archlinux/comments/7wqv98/compton_compositor_problem/du36y2p/
+    settings = {
+      unredir-if-possible  = true;
+      #unredir-if-possible-exclude = [
+      #  "class_g = 'mpv'",
+      #  "class_g = 'vlc'",
+      #  "class_g = 'Firefox'",
+      #  "class_g = 'Google-chrome'",
+      #];
+    };
+  };
 
   location = {
     longitude = 13.404954;
