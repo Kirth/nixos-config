@@ -3,13 +3,11 @@
 
 {
 	environment.systemPackages = with pkgs; [
-    arc-theme
 	  alacritty
 	  binutils-unwrapped
 	  curl
 	  dnsutils
 	  evince
-	  zsh
 	  gcc
 	  git
 	  gnome3.dconf
@@ -30,17 +28,19 @@
 	  tree
 	  vlc
 	  xclip
+	  zsh
+    arc-theme
     chromium
-    kubectl
-    firefox
-    tdesktop
-    wineWowPackages.stable
-    lxappearance
-    krita
-    zsh-powerlevel10k
     clinfo
-    killall
+    firefox
     font-awesome
+    killall
+    krita
+    kubectl
+    lxappearance
+    tdesktop
     unrar
+    wineWowPackages.stable
+    zsh-powerlevel10k
 	];
 }

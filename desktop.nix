@@ -133,7 +133,6 @@ in
       twemoji-color-font
       input-fonts
 
-      # Consider just symbola instead of noto-*
       noto-fonts
       noto-fonts-extra
       noto-fonts-emoji
