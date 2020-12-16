@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  secrets = import "/etc/nixos/secrets.nix";
+in
 {
   imports = [
     ./hardware-configuration.nix

@@ -9,6 +9,7 @@ let
   }) {
     inherit pkgs;
   };
+  secrets = import "/etc/nixos/secrets.nix";
 in
 {
   services.xserver = {
@@ -61,8 +62,8 @@ in
   };
 
   location = {
-    longitude = 13.404954;
-    latitude = 52.520008;
+    longitude = secrets.longitude;
+    latitude = secrets.latitude;
   };
 
   services.redshift = {
