@@ -10,21 +10,16 @@ in
     ./desktop.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
-  
-  system.stateVersion = "20.09";
-
   networking.hostName = "wodan";
+  system.stateVersion = "20.09";
+  nixpkgs.config.allowUnfree = true;
 
 
-  # systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.cleanTmpDir = true;
 
 #  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = ["amdgpu.gpu_recovery=1" "amdgpu.noretry=0"];
   boot.kernelModules = [ "amdgpu" "coretemp" "nct6775" ];
+  services.xserver.videoDrivers = ["amdgpu"];
 
   boot.initrd.luks.devices."root" = {
 	  device = "/dev/disk/by-uuid/53a2d88d-6138-4b6b-ad16-ec3c065e31e1";

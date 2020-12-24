@@ -1,19 +1,15 @@
-
 { config, lib, pkgs, ... }:
 
 #let emacs = import ./emacs.nix { inherit pkgs; };
 let
-  nur = import (builtins.fetchTarball {
-    url = "https://github.com/nix-community/NUR/archive/69796ca78d92e2677d59b631512094e1cbe85054.tar.gz";
-    sha256 = "09aa9ilvcllmv60mhs3gkzmf29cnbxnnsy3h8wf5dhkhcj9b8mpj";
-  }) {
-    inherit pkgs;
-  };
   secrets = import "/etc/nixos/secrets.nix";
 in
 {
+  # systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.cleanTmpDir = true;
   services.xserver = {
-    videoDrivers = ["amdgpu"];
     enable = true;
     layout = "us";
     #    xkbOptions = "altgr-intl,ctrl:swapcaps";
@@ -35,7 +31,6 @@ in
           theme.name = "Arc-Dark";
         };
       };
-      
     };
   };
 
@@ -44,9 +39,6 @@ in
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
 
-  #
-#  services.compton.enable = true;
-#  services.compton.backend = "xrender";
   services.onedrive.enable = true;
 
   services.picom = {
@@ -73,12 +65,11 @@ in
 
   services.redshift = {
     enable = true;
-
+    temperature.night = 3400;
     brightness = {
       day = "1";
       night = "0.85";
     };
-    #temperature.night = 3400;
   };
 
   services.emacs = {
@@ -100,28 +91,6 @@ in
   #   '';
   #                };
     
-  # };
-
-  # programs.rofi = {
-  #   enabled = true;
-  #   location = "center";
-  # };
-
-  # programs.feh.enable = true;   # 
-  # programs.firefox = {
-  #   enable = true;
-  #   package = pkgs.firefox;
-
-  #   extensions = with nur.repos.rycee.firefox-addons; [
-  #     https-everywhere
-  #     privacy-badger
-  #     ublock-origin
-  #     vim-vixen
-  #     #octotree
-  #     # TODO: those are not included yet
-  #     #wallabagger
-  #     #fixed-zoom
-  #   ];
   # };
 
   fonts = {
@@ -156,5 +125,24 @@ in
       subpixel.lcdfilter = "light";
       defaultFonts.monospace = [ "Iosevka" ];
     };
+  };
+  
+  programs.gnupg.agent.enable = true;
+  
+  ## Users
+  users.users.kirth = {
+    name = "kirth";
+    isNormalUser = true;
+    uid = 1000;
+    extraGroups = [ "wheel" "docker" "disk" "audio" "video"
+                    "systemd-journal" "libvirtd" "jackaudio"
+                    "user-with-access-to-virtualbox"  ];
+    createHome = true;
+    shell = pkgs.zsh;
+  };
+  
+  security.sudo = {
+    enable = true;
+	  extraConfig = "wheel ALL=(ALL:ALL) SETENV: ALL";
   };
 }
