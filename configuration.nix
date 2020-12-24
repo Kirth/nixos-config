@@ -72,23 +72,4 @@ in
     enable = true;
     cpuFreqGovernor = "powersave";
   };
-
-  programs.gnupg.agent.enable = true;
-  
-  users.users.kirth = {
-    name = "kirth";
-    isNormalUser = true;
-    uid = 1000;
-    extraGroups = [ "wheel" "docker" "disk" "audio" "video"
-                    "systemd-journal" "libvirtd" "jackaudio"
-                    "user-with-access-to-virtualbox"  ];
-    createHome = true;
-    shell = pkgs.zsh;
-  };
-  
-  security.sudo = {
-    enable = true;
-	  extraConfig = "wheel ALL=(ALL:ALL) SETENV: ALL";
-  };
-
 }
