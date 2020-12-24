@@ -31,7 +31,7 @@ in
   hardware.enableRedistributableFirmware = true;
 
   i18n.defaultLocale = "en_US.UTF-8";
-  time.timeZone = "Europe/Berlin";
+  time.timeZone = secrets.timeZone;
 
   hardware.opengl = {
     enable = true;
@@ -59,7 +59,7 @@ in
 	  docker.autoPrune.enable = true;
     virtualbox.host = {
       enable = true;
-      enableExtensionPack = true;
+#      enableExtensionPack = true; # causes a lot of rebuilds :/
     };
   };
 
