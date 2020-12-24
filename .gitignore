@@ -2,3 +2,4 @@ hardware-configuration.nix
 result
 secrets.nix
 wifi.nix
+configuration.nix
