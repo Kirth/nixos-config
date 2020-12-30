@@ -34,6 +34,7 @@
     clinfo
     firefox
     font-awesome
+    i3status-rust
     killall
     krita
     kubectl
