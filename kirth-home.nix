@@ -106,6 +106,10 @@ in
     '';
                   };
   };
+
+  xsession.pointerCursor = {
+    size = 32;
+  };
   
   
 }
