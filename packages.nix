@@ -30,6 +30,7 @@
 	  xclip
 	  zsh
     arc-theme
+    calibre
     chromium
     clinfo
     firefox
@@ -39,9 +40,16 @@
     krita
     kubectl
     lxappearance
+    mpv
+    scrot
+    spotify
+    tdesktop
     tdesktop
     unrar
     wineWowPackages.stable
+    xorg.xev
+    xscreensaver
+    youtube-dl
     zsh-powerlevel10k
 	];
 }
