@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  secrets = import "/etc/nixos/secrets.nix";
+  secrets = import "/mnt/etc/nixos/secrets.nix";
 in
 {
   imports = [
@@ -21,7 +21,7 @@ in
 
     wireless.enable = true;
     wireless.userControlled.enable = true;
-    wireless.interfaces = [ "wlp3s0" ]; # TODO: param
+    wireless.interfaces = [ "wlp4s0" ]; # TODO: param
     wireless.networks = (import (./wifi.nix) { inherit pkgs; });
   };
 
