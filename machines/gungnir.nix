@@ -1,26 +1,23 @@
 { config, pkgs, ... }:
 
 let
-  secrets = import "/mnt/etc/nixos/secrets.nix";
+  secrets = import "/etc/nixos/secrets.nix";
 in
 {
   imports = [
-    ./hardware-configuration.nix
-    ./packages.nix
-    ./laptop.nix
+    ../hardware-configuration.nix
+    ../packages.nix
+    ../laptop.nix
   ];
-
-  networking
 
   networking.hostName = "gungnir";
   system.stateVersion = "20.09";
   nixpkgs.config.allowUnfree = true;
 
+  networking.wireless.interfaces = [ "wlp4s0" ];
 
-#  boot.loader.grub.enable = true;
-#  boot.loader.grub.version = 2;
-#  boot.loader.grub.efiSupport = true;
-#  boot.loader.efi.canTouchEfiVariables = true;
+  hardware.cpu.intel.updateMicrocode = true;
+  services.xserver.videoDrivers = [ "intel" ];
 
   boot.initrd.luks.devices."root" = {
 	device = "/dev/disk/by-uuid/cf3d1f00-24ec-4efd-a9c1-810f97fd7019";
@@ -28,23 +25,12 @@ in
 	  preLVM = true;
   };
 
-  hardware.enableRedistributableFirmware = true;
-
-  i18n.defaultLocale = "en_US.UTF-8";
-  time.timeZone = secrets.timeZone;
-
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
-
  # Install emacs
   services.emacs = {
     install = true;
   	defaultEditor = true;
 #  	package = import ./emacs.nix { inherit pkgs; };
-   };
+  };
 
   services.openssh = {
     enable = true;
@@ -58,10 +44,5 @@ in
       enable = true;
 #      enableExtensionPack = true; # causes a lot of rebuilds :/
     };
-  };
-
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "powersave";
   };
 }

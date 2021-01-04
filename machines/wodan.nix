@@ -5,21 +5,21 @@ let
 in
 {
   imports = [
-    ./hardware-configuration.nix
-    ./packages.nix
-    ./desktop.nix
+    ../hardware-configuration.nix
+    ../packages.nix
+    ../desktop.nix
   ];
 
   networking.hostName = "wodan";
   system.stateVersion = "20.09";
   nixpkgs.config.allowUnfree = true;
 
-
-
-#  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = ["amdgpu.gpu_recovery=1" "amdgpu.noretry=0"];
   boot.kernelModules = [ "amdgpu" "coretemp" "nct6775" ];
+  
+  hardware.cpu.amd.updateMicrocode = true;
   services.xserver.videoDrivers = ["amdgpu"];
+  hardware.opengl.extraPackages = with pkgs; [ amdvlk ];
 
   boot.initrd.luks.devices."root" = {
 	  device = "/dev/disk/by-uuid/53a2d88d-6138-4b6b-ad16-ec3c065e31e1";
@@ -27,27 +27,12 @@ in
 	  preLVM = true;
   };
 
-  hardware.cpu.amd.updateMicrocode = true;
-  hardware.enableRedistributableFirmware = true;
-
-  i18n.defaultLocale = "en_US.UTF-8";
-  time.timeZone = secrets.timeZone;
-
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-    extraPackages = with pkgs; [
-      amdvlk
-    ];
-  };
-
- # Install emacs
+  # Install emacs
   services.emacs = {
     install = true;
   	defaultEditor = true;
-#  	package = import ./emacs.nix { inherit pkgs; };
-   };
+    #  	package = import ./emacs.nix { inherit pkgs; };
+  };
 
   services.openssh = {
     enable = true;
@@ -61,10 +46,5 @@ in
       enable = true;
 #      enableExtensionPack = true; # causes a lot of rebuilds :/
     };
-  };
-
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "powersave";
   };
 }

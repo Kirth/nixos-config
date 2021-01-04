@@ -9,6 +9,10 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.cleanTmpDir = true;
+
+  i18n.defaultLocale = "en_US.UTF-8";
+  time.timeZone = secrets.timeZone;
+    
   services.xserver = {
     enable = true;
     layout = "us";
@@ -32,6 +36,13 @@ in
         };
       };
     };
+  };
+
+  hardware.enableRedistributableFirmware = true;
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
   };
 
   # Enable sound.
@@ -100,7 +111,7 @@ in
       powerline-fonts
       source-code-pro
       twemoji-color-font
-      input-fonts
+      input-fonts # This is a problematic one
 
       noto-fonts
       noto-fonts-extra
@@ -128,6 +139,11 @@ in
   };
   
   programs.gnupg.agent.enable = true;
+
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = "powersave";
+  };
   
   ## Users
   users.users.kirth = {

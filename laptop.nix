@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  secrets = import "/mnt/etc/nixos/secrets.nix";
+  secrets = import "/etc/nixos/secrets.nix";
 in
 {
   imports = [
@@ -9,7 +9,8 @@ in
   ];
 
   services.logind.lidSwitch = "suspend";
-  services.xserver.videoDrivers = [ "intel" ]; # TODO: not here
+
+  
   services.tlp.enable = true;
 
   networking = {
@@ -21,7 +22,6 @@ in
 
     wireless.enable = true;
     wireless.userControlled.enable = true;
-    wireless.interfaces = [ "wlp4s0" ]; # TODO: param
     wireless.networks = (import (./wifi.nix) { inherit pkgs; });
   };
 
