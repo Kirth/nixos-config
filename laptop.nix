@@ -10,9 +10,6 @@ in
 
   services.logind.lidSwitch = "suspend";
 
-  
-  services.tlp.enable = true;
-
   networking = {
     enableIPv6 = false;
 
@@ -25,5 +22,11 @@ in
     wireless.networks = (import (./wifi.nix) { inherit pkgs; });
   };
 
-
+  services.tlp.enable = {
+    enable = true;
+    extraConfig = ''
+      CPU_SCALING_GOVERNOR_ON_AC=performance
+      CPU_SCALING_GOVERNOR_ON_BAT=powersave
+    '';
+  };
 }
