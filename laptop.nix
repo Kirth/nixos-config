@@ -30,6 +30,9 @@ in
     '';
   };
 
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   ## Input
   services.xserver.synaptics = {
     enable = true;
