@@ -7,6 +7,7 @@
 	  binutils-unwrapped
 	  curl
 	  dnsutils
+    dmidecode
 	  evince
 	  gcc
 	  git
