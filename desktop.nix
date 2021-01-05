@@ -40,8 +40,15 @@ in
     };
   };
 
+  services.physlock = {
+    enable = true;
+    allowAnyUser = true;
+  };
+
   services.xserver.xautolock = {
     enable = true;
+#    enableNotifier = true;
+    locker = ''${config.security.wrapperDir}/physlock'';
   };
 
   hardware.enableRedistributableFirmware = true;
