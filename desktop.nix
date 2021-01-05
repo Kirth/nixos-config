@@ -35,6 +35,9 @@ in
           theme.name = "Arc-Dark";
         };
       };
+      sessionCommands = ''
+        sh ~/.xinitrc
+      ''; 
     };
   };
 
