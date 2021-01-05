@@ -5,14 +5,14 @@ let
   secrets = import "/etc/nixos/secrets.nix";
 in
 {
-  # systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.cleanTmpDir = true;
 
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = secrets.timeZone;
-    
+
+  ## Display
   services.xserver = {
     enable = true;
     layout = "us";
@@ -45,7 +45,7 @@ in
     driSupport32Bit = true;
   };
 
-  # Enable sound.
+  ## Audio
   sound.enable = true;
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
