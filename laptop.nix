@@ -31,17 +31,18 @@ in
   };
 
   ## Input
-  xserver.synaptics = {
+  services.xserver.synaptics = {
     enable = true;
     palmDetect = true;
     tapButtons = true;
     twoFingerScroll = true; # brave
   };
 
-  xserver.libinput = {
-    clickMethod = "clickfinger";
-    additionalOptions = ''
-      Option "TappingButtonMap" "lmr"
-    '';
-  }
+  services.xserver.libinput = {
+	  enable = false;
+    # clickMethod = "clickfinger";
+    # additionalOptions = ''
+    #   Option "TappingButtonMap" "lmr"
+    # '';
+  };
 }

@@ -19,7 +19,6 @@ in
     #    xkbOptions = "altgr-intl,ctrl:swapcaps";
     xkbOptions = "altgr-intl";
     exportConfiguration = true;
-    libinput.enable = true;
     
     windowManager.i3 = {
       enable = true;
