@@ -29,4 +29,19 @@ in
       CPU_SCALING_GOVERNOR_ON_BAT=powersave
     '';
   };
+
+  ## Input
+  xserver.synaptics = {
+    enable = true;
+    palmDetect = true;
+    tapButtons = true;
+    twoFingerScroll = true; # brave
+  };
+
+  xserver.libinput = {
+    clickMethod = "clickfinger";
+    additionalOptions = ''
+      Option "TappingButtonMap" "lmr"
+    '';
+  }
 }
