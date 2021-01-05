@@ -41,6 +41,10 @@ in
     };
   };
 
+  services.xserver.xautolock = {
+    enable = true;
+  };
+
   hardware.enableRedistributableFirmware = true;
   hardware.opengl = {
     enable = true;
