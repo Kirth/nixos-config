@@ -22,7 +22,7 @@ in
     wireless.networks = (import (./wifi.nix) { inherit pkgs; });
   };
 
-  services.tlp.enable = {
+  services.tlp = {
     enable = true;
     extraConfig = ''
       CPU_SCALING_GOVERNOR_ON_AC=performance
