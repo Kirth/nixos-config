@@ -7,7 +7,6 @@
 	  binutils-unwrapped
 	  curl
 	  dnsutils
-    dmidecode
 	  evince
 	  gcc
 	  git
@@ -26,6 +25,7 @@
 	  pulseaudio-ctl
 	  pwgen
 	  screen
+    sqlite
 	  tree
 	  vlc
 	  xclip
@@ -34,6 +34,7 @@
     calibre
     chromium
     clinfo
+    dmidecode
     firefox
     font-awesome
     i3status-rust
@@ -42,6 +43,7 @@
     kubectl
     lxappearance
     mpv
+    pavucontrol
     scrot
     spotify
     tdesktop
