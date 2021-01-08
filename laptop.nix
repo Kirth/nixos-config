@@ -37,9 +37,12 @@ in
   services.xserver.synaptics = {
     enable = true;
     palmDetect = true;
-    tapButtons = true;
     twoFingerScroll = true; # brave
   };
+
+  services.xserver.displayManager.sessionCommands = ''
+    ${pkgs.xorg.xinput}/bin/xinput disable 'SynPS/2 Synaptics TouchPad'
+  '';
 
   services.xserver.libinput = {
 	  enable = false;
