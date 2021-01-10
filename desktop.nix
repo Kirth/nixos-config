@@ -169,7 +169,7 @@ in
     uid = 1000;
     extraGroups = [ "wheel" "docker" "disk" "audio" "video"
                     "systemd-journal" "libvirtd" "jackaudio"
-                    "user-with-access-to-virtualbox"  ];
+                    "user-with-access-to-virtualbox" "networkmanager" ];
     createHome = true;
     shell = pkgs.zsh;
   };
