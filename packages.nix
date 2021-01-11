@@ -4,6 +4,7 @@
 {
 	environment.systemPackages = with pkgs; [
 	  alacritty
+    arandr
 	  binutils-unwrapped
 	  curl
 	  dnsutils
@@ -14,6 +15,7 @@
 	  gnome3.glib_networking
 	  gnumake
 	  gnupg
+    google-cloud-sdk
 	  htop
 	  jq
 	  manpages
@@ -36,11 +38,11 @@
     dmidecode
     exfat
     firefox
-    font-awesome
     i3status-rust
     killall
     krita
     kubectl
+    kubernetes-helm
     lxappearance
     mpv
     pavucontrol
