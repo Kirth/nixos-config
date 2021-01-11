@@ -8,7 +8,6 @@
 	  curl
 	  dnsutils
 	  evince
-    exfat
 	  gcc
 	  git
 	  gnome3.dconf
@@ -26,7 +25,6 @@
 	  pulseaudio-ctl
 	  pwgen
 	  screen
-    sqlite
 	  tree
 	  vlc
 	  xclip
@@ -36,6 +34,7 @@
     chromium
     clinfo
     dmidecode
+    exfat
     firefox
     font-awesome
     i3status-rust
@@ -46,7 +45,9 @@
     mpv
     pavucontrol
     scrot
+    slack
     spotify
+    sqlite
     tdesktop
     tdesktop
     unrar
