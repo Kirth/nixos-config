@@ -49,6 +49,8 @@ in
     userName = secrets.git.userName;
   };
 
+  programs.go.enable = true;
+
   programs.zsh = {
     enable = true;
     history = {
