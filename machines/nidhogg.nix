@@ -15,8 +15,10 @@ in
   nixpkgs.config.allowUnfree = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelModules = [ "acpi_call" ];
+  boot.kernelParams = [ "acpi_backlight=native" ];
   hardware.cpu.amd.updateMicrocode = true;
-  services.xserver.videoDrivers = ["amdgpu"];
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   networking.wireless.interfaces = [ "wlp3s0" ];
 
