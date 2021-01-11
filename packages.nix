@@ -8,6 +8,7 @@
 	  curl
 	  dnsutils
 	  evince
+    exfat
 	  gcc
 	  git
 	  gnome3.dconf
