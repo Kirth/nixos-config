@@ -19,6 +19,7 @@ in
 
     wireless.enable = true;
     wireless.userControlled.enable = true;
+    networkmanager.enable = true;
     wireless.networks = (import (./wifi.nix) { inherit pkgs; });
   };
 
@@ -37,9 +38,12 @@ in
   services.xserver.synaptics = {
     enable = true;
     palmDetect = true;
-    tapButtons = true;
     twoFingerScroll = true; # brave
   };
+
+  services.xserver.displayManager.sessionCommands = ''
+    ${pkgs.xorg.xinput}/bin/xinput disable 'SynPS/2 Synaptics TouchPad'
+  '';
 
   services.xserver.libinput = {
 	  enable = false;
