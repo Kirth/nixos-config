@@ -14,14 +14,14 @@ in
   system.stateVersion = "20.09";
   nixpkgs.config.allowUnfree = true;
 
-  networking.wireless.interfaces = [ "wlp4s0" ]; # TODO
-
-  hardware.cpu.intel.updateMicrocode = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  hardware.cpu.amd.updateMicrocode = true;
   services.xserver.videoDrivers = ["amdgpu"];
-  hardware.opengl.extraPackages = with pkgs; [ amdvlk ];
+
+  networking.wireless.interfaces = [ "wlp3s0" ];
 
   boot.initrd.luks.devices."root" = {
-	device = "/dev/disk/by-uuid/"; # TODO :read !blkid /dev/sda2
+    device = "/dev/disk/by-uuid/e520f8fd-c5fe-4deb-a839-f99f1ed615b6";
     allowDiscards = true;
 	  preLVM = true;
   };
