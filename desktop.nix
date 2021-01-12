@@ -177,4 +177,9 @@ in
     enable = true;
 	  extraConfig = "wheel ALL=(ALL:ALL) SETENV: ALL";
   };
+
+  services.openssh = {
+    enable = true;
+    permitRootLogin = "no";
+  };
 }
