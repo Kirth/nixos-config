@@ -65,6 +65,8 @@ in
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
         PASSWORD_STORE_DIR=${secrets.passwordStoreDir};
+        alias ku=kubectl;
+        export PATH=$PATH:/home/kirth/Tooling/bin
       '';
 
     oh-my-zsh = {
@@ -75,7 +77,7 @@ in
         "kubectl"
         "kube-ps1"
       ];
-      theme = "powerlevel10k/powerlevel10k";
+     # theme = "powerlevel10k/powerlevel10k";
     };
   };
 

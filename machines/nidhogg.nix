@@ -14,10 +14,11 @@ in
   system.stateVersion = "20.09";
   nixpkgs.config.allowUnfree = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelModules = [ "acpi_call" ];
-  boot.kernelParams = [ "acpi_backlight=native" ];
+  boot.kernelPackages =  pkgs.linuxPackages_latest;
+  boot.kernelParams = ["amdgpu.gpu_recovery=1" "amdgpu.noretry=0" "acpi_backlight=native"];
+  boot.kernelModules = [ "amdgpu" "coretemp" "nct6775"  "acpi_call" ];
   hardware.cpu.amd.updateMicrocode = true;
+  hardware.enableAllFirmware = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
 
   networking.wireless.interfaces = [ "wlp3s0" ];
@@ -33,11 +34,6 @@ in
     install = true;
   	defaultEditor = true;
 #  	package = import ./emacs.nix { inherit pkgs; };
-  };
-
-  services.openssh = {
-    enable = true;
-    permitRootLogin = "yes";
   };
 
   virtualisation = {

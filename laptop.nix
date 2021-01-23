@@ -19,7 +19,7 @@ in
 
     wireless.enable = true;
     wireless.userControlled.enable = true;
-    networkmanager.enable = true;
+#    networkmanager.enable = true;
     wireless.networks = (import (./wifi.nix) { inherit pkgs; });
   };
 
@@ -33,6 +33,8 @@ in
 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+
+  services.autorandr.enable = true;
 
   ## Input
   services.xserver.synaptics = {

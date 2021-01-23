@@ -34,11 +34,6 @@ in
     #  	package = import ./emacs.nix { inherit pkgs; };
   };
 
-  services.openssh = {
-    enable = true;
-    permitRootLogin = "yes";
-  };
-
   virtualisation = {
     docker.enable = true;
 	  docker.autoPrune.enable = true;
