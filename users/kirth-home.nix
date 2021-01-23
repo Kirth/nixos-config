@@ -77,7 +77,7 @@ in
         "kubectl"
         "kube-ps1"
       ];
-      theme = "powerlevel10k/powerlevel10k";
+     # theme = "powerlevel10k/powerlevel10k";
     };
   };
 
