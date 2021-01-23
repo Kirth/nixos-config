@@ -19,7 +19,7 @@ in
 
     wireless.enable = true;
     wireless.userControlled.enable = true;
-    networkmanager.enable = true;
+#    networkmanager.enable = true;
     wireless.networks = (import (./wifi.nix) { inherit pkgs; });
   };
 
