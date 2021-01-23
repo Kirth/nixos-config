@@ -47,4 +47,6 @@ in
 #      enableExtensionPack = true; # causes a lot of rebuilds :/
     };
   };
+
+  services.xserver.wacom.enable = true;
 }
