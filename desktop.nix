@@ -44,11 +44,12 @@ in
     allowAnyUser = true;
   };
 
-  services.xserver.xautolock = {
-    enable = true;
-#    enableNotifier = true;
-    locker = ''${config.security.wrapperDir}/physlock'';
-  };
+  services.xserver.xautolock.enable = false;
+#   services.xserver.xautolock = {
+#     enable = true;
+# #    enableNotifier = true;
+#     locker = ''${config.security.wrapperDir}/physlock'';
+#   };
 
   hardware.enableRedistributableFirmware = true;
   hardware.opengl = {
