@@ -34,6 +34,8 @@ in
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
+  services.autorandr.enable = true;
+
   ## Input
   services.xserver.synaptics = {
     enable = true;
