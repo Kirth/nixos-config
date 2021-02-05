@@ -4,7 +4,6 @@
 {
 	environment.systemPackages = with pkgs; [
 	  alacritty
-    arandr
 	  binutils-unwrapped
 	  curl
 	  dnsutils
@@ -15,7 +14,6 @@
 	  gnome3.glib_networking
 	  gnumake
 	  gnupg
-    google-cloud-sdk
 	  htop
 	  jq
 	  manpages
@@ -31,6 +29,7 @@
 	  vlc
 	  xclip
 	  zsh
+    arandr
     arc-theme
     calibre
     chromium
@@ -38,6 +37,7 @@
     dmidecode
     exfat
     firefox
+    google-cloud-sdk
     i3status-rust
     killall
     krita
@@ -45,6 +45,7 @@
     kubernetes-helm
     lxappearance
     mpv
+    nix-index
     pavucontrol
     scrot
     slack
@@ -53,7 +54,9 @@
     tdesktop
     tdesktop
     unrar
+    usbutils
     wineWowPackages.stable
+    xdotool
     xorg.xev
     xscreensaver
     youtube-dl
