@@ -16,7 +16,8 @@ in
   services.xserver = {
     enable = true;
     layout = "us";
-    xkbVariant = "altgr-intl,ctrl:swapcaps";
+    xkbVariant = "altgr-intl"; # altgr-intl
+    xkbOptions = "ctrl:swapcaps";
     exportConfiguration = true;
     
     windowManager.i3 = {

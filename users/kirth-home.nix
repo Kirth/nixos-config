@@ -27,7 +27,6 @@ in
     silver-searcher
     smokeping
     source-code-pro
-    spotify
     steam
     tree
     unzip
@@ -35,6 +34,7 @@ in
     whois
     xclip
     xorg.fontadobe100dpi
+    font-awesome
     youtube-dl
     zsh
   ];
@@ -84,6 +84,7 @@ in
 
   programs.rofi = {
     enable = true;
+    terminal = "${pkgs.zsh}/bin/zsh";
   };
 
   programs.emacs.enable = true;
@@ -93,22 +94,22 @@ in
     package = pkgs.firefox;
   };
 
-  home.file = {
-    ".Xmodmap" =  { text = ''
-    ! Swap Caps_Lock and Control_L
-    remove Lock = Caps_Lock
-    remove Control = Control_L
-    keysym Control_L = Caps_Lock
-    keysym Caps_Lock = Control_L
-    add Lock = Caps_Lock
-    add Control = Control_L
-    '';
-                  };
+  # home.file = {
+  #   ".Xmodmap" =  { text = ''
+  #   ! Swap Caps_Lock and Control_L
+  #   remove Lock = Caps_Lock
+  #   remove Control = Control_L
+  #   keysym Control_L = Caps_Lock
+  #   keysym Caps_Lock = Control_L
+  #   add Lock = Caps_Lock
+  #   add Control = Control_L
+  #   '';
+  #                 };
     
-    ".xinitrc" = { text = ''
-    ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
-    '';
-                  };
-  };
+  #   ".xinitrc" = { text = ''
+  #   ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
+  #   '';
+  #                 };
+  # };
 
 }
