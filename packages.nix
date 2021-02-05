@@ -36,6 +36,7 @@
     clinfo
     dmidecode
     exfat
+    ffmpeg
     firefox
     google-cloud-sdk
     i3status-rust
