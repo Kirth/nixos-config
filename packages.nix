@@ -34,6 +34,7 @@
     calibre
     chromium
     clinfo
+    cloudflared
     dmidecode
     exfat
     ffmpeg
@@ -44,6 +45,7 @@
     krita
     kubectl
     kubernetes-helm
+    libreoffice
     lxappearance
     mpv
     nix-index
@@ -60,6 +62,7 @@
     xdotool
     xorg.xev
     xscreensaver
+    yamllint
     youtube-dl
     zsh-powerlevel10k
 	];
