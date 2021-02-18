@@ -66,6 +66,11 @@ in
         POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
         PASSWORD_STORE_DIR=${secrets.passwordStoreDir};
         alias ku=kubectl;
+        alias k=kubectl;
+        alias kevents=kubectl get events --sort-by=.metadata.creationTimestamp;
+        function kubash() {
+          kubectl exec --stdin --tty $1 -- /bin/bash
+        }
         export PATH=$PATH:/home/kirth/Tooling/bin
       '';
 
