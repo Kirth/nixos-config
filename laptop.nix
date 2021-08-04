@@ -8,7 +8,8 @@ in
     ./desktop.nix # A laptop is a special desktop.nix
   ];
 
-  services.logind.lidSwitch = "suspend";
+  #  services.logind.lidSwitch = "suspend";
+  
 
   networking = {
     enableIPv6 = false;
@@ -27,7 +28,7 @@ in
     enable = true;
     extraConfig = ''
       CPU_SCALING_GOVERNOR_ON_AC=performance
-      CPU_SCALING_GOVERNOR_ON_BAT=powersave
+      CPU_SCALING_GOVERNOR_ON_BAT=ondemand
     '';
   };
 

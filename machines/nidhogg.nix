@@ -8,11 +8,13 @@ in
     ../hardware-configuration.nix
     ../packages.nix
     ../laptop.nix
+    ../v4l2.nix
   ];
 
   networking.hostName = "nidhogg";
   system.stateVersion = "20.09";
   nixpkgs.config.allowUnfree = true;
+
 
   boot.kernelPackages =  pkgs.linuxPackages_latest;
   boot.kernelParams = ["amdgpu.gpu_recovery=1" "amdgpu.noretry=0" "acpi_backlight=native"];
@@ -20,8 +22,15 @@ in
   hardware.cpu.amd.updateMicrocode = true;
   hardware.enableAllFirmware = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
+  services.printing.enable = true;
+  services.printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
+  hardware.sane.enable = true;
+  
 
   networking.wireless.interfaces = [ "wlp3s0" ];
+
+  nixpkgs.config.packageOverrides = pkgs: { steam = pkgs.steam.override { extraPkgs = pkgs: [ pkgs.pipewire.lib ]; }; };
+
 
   boot.initrd.luks.devices."root" = {
     device = "/dev/disk/by-uuid/e520f8fd-c5fe-4deb-a839-f99f1ed615b6";
@@ -40,6 +49,8 @@ in
     docker.enable = true;
 	  docker.autoPrune.enable = true;
   };
+
+  v4l2 = true;
 
   services.udev = {
     extraRules = ''

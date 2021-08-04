@@ -8,6 +8,7 @@
 	  curl
 	  dnsutils
 	  evince
+    eid-mw
 	  gcc
 	  git
 	  gnome3.dconf

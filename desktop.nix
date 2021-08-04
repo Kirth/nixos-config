@@ -160,7 +160,7 @@ in
 
   powerManagement = {
     enable = true;
-    cpuFreqGovernor = "powersave";
+    cpuFreqGovernor = "ondemand";
   };
   
   ## Users
@@ -170,7 +170,8 @@ in
     uid = 1000;
     extraGroups = [ "wheel" "docker" "disk" "audio" "video"
                     "systemd-journal" "libvirtd" "jackaudio"
-                    "user-with-access-to-virtualbox" "networkmanager" ];
+                    "user-with-access-to-virtualbox" "networkmanager"
+                    "lp" "scanner" ];
     createHome = true;
     shell = pkgs.zsh;
   };

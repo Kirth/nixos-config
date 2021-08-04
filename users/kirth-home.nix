@@ -13,7 +13,6 @@ in
     docker-gc
     file
     git
-    git
     jq
     lftp
     lsof
@@ -27,7 +26,7 @@ in
     silver-searcher
     smokeping
     source-code-pro
-    steam
+    #    steam
     tree
     unzip
     virtmanager
@@ -42,6 +41,7 @@ in
   programs.home-manager.enable = true;
   home.language.base = "en_US.UTF-8";
   home.keyboard.layout = "en_US";
+#  programs.steam.enable = true;
 
   programs.git = {
     enable = true;
@@ -72,12 +72,14 @@ in
           kubectl exec --stdin --tty $1 -- /bin/bash
         }
         export PATH=$PATH:/home/kirth/Tooling/bin
+        export TERM=xterm
+        alias kudd="kubectl describe deployment";
       '';
 
     oh-my-zsh = {
       enable = true;
       plugins = [
-        "git"
+#        "git"
         "sudo"
         "kubectl"
         "kube-ps1"
@@ -85,7 +87,6 @@ in
      # theme = "powerlevel10k/powerlevel10k";
     };
   };
-
 
   programs.rofi = {
     enable = true;
@@ -97,6 +98,7 @@ in
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
+    override.pkcs11Modules = [ pkgs.eid-mw ]; 
   };
 
   # home.file = {
